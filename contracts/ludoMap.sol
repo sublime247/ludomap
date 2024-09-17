@@ -19,7 +19,7 @@ contract LudoMap {
     uint8 public numPlayers;  // Number of players registered
 
 
-/*------------Algorithm to roll a die-----------------*/
+    /*------------Algorithm to roll a die-----------------*/
 
     function rollDice() public  returns (uint8) {
         require(players[currentTurn] == msg.sender, "It's not your turn!");
@@ -43,13 +43,10 @@ contract LudoMap {
         return diceRoll;
     }
 
-
-
-
     // Register a player
     function registerPlayer() public {
         require(numPlayers < 4, "Max 4 players allowed!");
-        require(playerInfo[msg.sender].playerAddress != address(0), "Zero address not allowed!");
+        require(playerInfo[msg.sender].playerAddress == address(0), "Player already registered!");
 
         players.push(msg.sender);
         playerInfo[msg.sender] = Player({
@@ -58,11 +55,7 @@ contract LudoMap {
             hasWon: false
         });
         numPlayers++;
-
     }
-
-    // Roll the dice
-
 
     // Move a piece (simplified: move the first piece that can move)
     function movePiece(uint8 diceRoll) private {
@@ -90,7 +83,7 @@ contract LudoMap {
 
     // Check if the piece can move based on its current position and dice roll
     function canMovePiece(uint8 piecePosition, uint8 diceRoll) private pure returns (bool) {
-        return piecePosition + diceRoll <= steps_home ;
+        return piecePosition + diceRoll <= steps_home;
     }
 
     // Check if all pieces are in the home position (player wins)
@@ -107,10 +100,5 @@ contract LudoMap {
     function nextTurn() private {
         currentTurn = (currentTurn + 1) % numPlayers;
     }
-
-
-
-
-
 
 }

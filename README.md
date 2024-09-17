@@ -1,13 +1,11 @@
-# Sample Hardhat Project
+## PseudoRandomNumberGenerator for Ludo Game
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+1. **Objective**: To generate random numbers for Ludo Game.
+     Maximum number of players that can register: 4
+     Maximum number of players that can play: 4
+     Maximum number of dice that can be rolled: 1
+     
+     
 
-Try running some of the following tasks:
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.ts
-```
+
